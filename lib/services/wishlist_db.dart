@@ -9,13 +9,20 @@ import 'package:wishlist_hive_flutter/models/wishlist.dart';
 
 class WishListDatabase {
   String _boxName = "WishList";
+  var initialized = false;
 
   Future<void> _initHive() async {
-    Hive.registerAdapter<WishList>(WishListAdapter());
-    Hive.initFlutter();
+    await Hive.initFlutter();
+
+    if (!initialized) {
+      initialized = true;
+
+      Hive.registerAdapter<WishList>(WishListAdapter());
+    }
   }
 
   Future<Box> wishListBox() async {
+    print(initialized);
     await _initHive();
     var box = await Hive.openBox<WishList>(_boxName);
     return box;
@@ -29,7 +36,8 @@ class WishListDatabase {
 
   Future<int> addToBox(WishList wishList) async {
     final box = await wishListBox();
-    var a = box.add(wishList);
+
+    var a = box.add(WishList(wishList.price, wishList.product));
     return a;
   }
 

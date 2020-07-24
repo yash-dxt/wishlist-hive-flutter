@@ -1,18 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:async';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wishlist_hive_flutter/models/wishlist.dart';
 
 class WishListDatabase {
   String _boxName = "WishList";
 
-
   Future<void> _initHive() async {
     Hive.registerAdapter<WishList>(WishListAdapter());
-    var dir = await getApplicationDocumentsDirectory();
-    Hive.init(dir.path);
+    Hive.initFlutter();
   }
 
   Future<Box> wishListBox() async {
@@ -21,8 +21,7 @@ class WishListDatabase {
     return box;
   }
 
-
-  Future<List<WishList>> getFullWishList() async{
+  Future<List<WishList>> getFullWishList() async {
     final box = await wishListBox();
     List<WishList> wishList = box.values.toList();
     return wishList;

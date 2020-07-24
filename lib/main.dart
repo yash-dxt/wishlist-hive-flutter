@@ -5,8 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:wishlist_hive_flutter/models/wishlist.dart';
 import 'package:wishlist_hive_flutter/screens/wishlist_screen.dart';
 import 'package:wishlist_hive_flutter/services/wishlist_provider.dart';
-
-
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
   runApp(MyApp());

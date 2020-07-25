@@ -21,29 +21,28 @@ class WishListProvider with ChangeNotifier {
     wishListDatabase.getFullWishList().then((value) {
       _wishList = value;
       notifyListeners();
+      print(wishListCount);
     });
   }
 
   void addNewWishList({int price, String product}) {
     wishListDatabase.addToBox(WishList(price, product));
     fetchWishList();
-
-    print(wishListCount);
   }
 
-  void removeFromWishList(int key) {
-    wishListDatabase.deleteFromBox(key);
-    fetchWishList();
-    print(wishListCount);
-  }
-
-  void removeAll() {
-    wishListDatabase.deleteAll();
+  void removeFromWishList(int index) {
+    wishListDatabase.deleteFromBox(index);
     fetchWishList();
   }
 
-  void updateWishList({int price, String product, int key}) {
-    wishListDatabase.updateWish(key, WishList(price, product));
+  void removeAll() async{
+   await wishListDatabase.deleteAll();
+
+    fetchWishList();
+  }
+
+  void updateWishList({int price, String product, int index}) {
+    wishListDatabase.updateWish(index, WishList(price, product));
     fetchWishList();
   }
 

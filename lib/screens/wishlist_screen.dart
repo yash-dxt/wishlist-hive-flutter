@@ -25,88 +25,84 @@ class _WishListScreenState extends State<WishListScreen> {
             floatingActionButton:
                 Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               FloatingActionButton(
-                onPressed: () {
-                  wishListData.addNewWishList(product: 'aloo', price: 12);
-                },
                 child: Icon(Icons.add),
-
-//                onPressed: () {
-//                  showModalBottomSheet(
-//                      context: context,
-//                      builder: (context) {
-//                        return Container(
-//                          padding: EdgeInsets.all(15),
-//                          child: Form(
-//                            key: _formKey,
-//                            child: Column(
-//                              children: [
-//                                SizedBox(
-//                                  height: 10,
-//                                ),
-//                                Text('New Wish',
-//                                    style: TextStyle(fontSize: 20)),
-//                                SizedBox(
-//                                  height: 30,
-//                                ),
-//                                TextFormField(
-//                                  validator: (value) {
-//                                    if (value.isEmpty) {
-//                                      return 'Please enter something';
-//                                    }
-//                                    return null;
-//                                  },
-//                                  onChanged: (value) {
-//                                    product = value;
-//                                  },
-//                                  decoration: InputDecoration(
-//                                    border: OutlineInputBorder(),
-//                                    labelText: 'Product',
-//                                    helperText: 'Enter the product!',
-//                                  ),
-//                                ),
-//                                SizedBox(
-//                                  height: 30,
-//                                ),
-//                                TextFormField(
-//                                  validator: (value) {
-//                                    if (value.isEmpty) {
-//                                      return 'Please enter something';
-//                                    }
-//                                    return null;
-//                                  },
-//                                  onChanged: (value) {
-//                                    price = int.parse(value);
-//                                  },
-//                                  decoration: InputDecoration(
-//                                    border: OutlineInputBorder(),
-//                                    labelText: 'Price',
-//                                    helperText: 'Enter the price!',
-//                                  ),
-//                                ),
-//                                SizedBox(
-//                                  height: 20,
-//                                ),
-//                                Row(
-//                                  mainAxisAlignment: MainAxisAlignment.end,
-//                                  children: [
-//                                    FloatingActionButton(
-//                                        child: Icon(Icons.check),
-//                                        onPressed: () {
-//                                          if (_formKey.currentState
-//                                              .validate()) {
-//                                            wishListData.addNewWishList(
-//                                                price: price, product: product);
-//                                            Navigator.pop(context);
-//                                          }
-//                                        })
-//                                  ],
-//                                )
-//                              ],
-//                            ),
-//                          ),
-//                        );
-//                      });
-//                },
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          padding: EdgeInsets.all(15),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text('New Wish',
+                                    style: TextStyle(fontSize: 20)),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                TextFormField(
+                                  validator: (value) {
+                                    if (value.isEmpty) {
+                                      return 'Please enter something';
+                                    }
+                                    return null;
+                                  },
+                                  onChanged: (value) {
+                                    product = value;
+                                  },
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Product',
+                                    helperText: 'Enter the product!',
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                TextFormField(
+                                  validator: (value) {
+                                    if (value.isEmpty) {
+                                      return 'Please enter something';
+                                    }
+                                    return null;
+                                  },
+                                  onChanged: (value) {
+                                    price = int.parse(value);
+                                  },
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Price',
+                                    helperText: 'Enter the price!',
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    FloatingActionButton(
+                                        child: Icon(Icons.check),
+                                        onPressed: () {
+                                          if (_formKey.currentState
+                                              .validate()) {
+                                            wishListData.addNewWishList(
+                                                price: price, product: product);
+                                            Navigator.pop(context);
+                                          }
+                                        })
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      });
+                },
               ),
               SizedBox(
                 width: 10,
